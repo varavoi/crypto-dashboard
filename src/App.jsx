@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './App.module.css';
 import { CryptoProvider } from './contexts/CryptoContext';
+import { PortfolioProvider } from './contexts/PortfolioContext';
 import { ThemeProvider } from './components/ThemeToggle/ThemeToggle';
 import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -11,14 +12,16 @@ function App() {
   return (
     <ThemeProvider>
       <CryptoProvider>
-        <div className={styles.app}>
-          <Notification />
-          <InstallPrompt />
-          <Header />
-          <main>
-            <Dashboard />
-          </main>
-        </div>
+        <PortfolioProvider>
+          <div className={styles.app}>
+            <Notification />
+            <InstallPrompt />
+            <Header />
+            <main>
+              <Dashboard />
+            </main>
+          </div>
+        </PortfolioProvider>
       </CryptoProvider>
     </ThemeProvider>
   );

@@ -18,7 +18,6 @@
   margin-bottom: 2rem;
 }
 
-/* Новая сетка для дашборда */
 .dashboardGrid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -40,7 +39,6 @@
   top: 2rem;
 }
 
-/* Остальные стили остаются */
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -59,7 +57,7 @@
   border: 2px dashed var(--border-color);
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 1200px) {
   .dashboardGrid {
     grid-template-columns: 1fr;

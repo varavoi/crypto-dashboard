@@ -7,6 +7,8 @@ import RefreshControls from '../RefreshControls/RefreshControls';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import CryptoList from '../CryptoList/CryptoList';
 import NewsWidget from '../NewsWidget/NewsWidget';
+import PortfolioWidget from '../PortfolioWidget/PortfolioWidget';
+import PriceAlerts from '../PriceAlerts/PriceAlerts';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
@@ -98,6 +100,8 @@ const Dashboard = () => {
 
         {/* Правая колонка - дополнительные виджеты */}
         <div className={styles.sidebar}>
+          <PortfolioWidget />
+          <PriceAlerts />
           <CryptoList />
           <NewsWidget />
         </div>
