@@ -7,6 +7,7 @@ import { CryptoProvider } from './contexts/CryptoContext';
 // Импортируем компоненты
 import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
+import Notification from './components/Notification/Notification';
 
 // Главный компонент приложения
 function App() {
@@ -14,6 +15,9 @@ function App() {
     // Оборачиваем все приложение в CryptoProvider для доступа к состоянию криптовалют
     <CryptoProvider>
       <div className={styles.app}>
+        {/* Компонент уведомлений (рендерится поверх всего) */}
+        <Notification />
+        
         {/* Компонент заголовка */}
         <Header />
         

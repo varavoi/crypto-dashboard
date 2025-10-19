@@ -1,0 +1,124 @@
+/* Базовые стили для уведомления */
+.notification {
+  /* Позиционирование */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  /* Максимальная ширина */
+  max-width: 400px;
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру */
+  align-items: center;
+  /* Внутренние отступы */
+  padding: 1rem;
+  /* Скругление углов */
+  border-radius: 8px;
+  /* Тень */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* Начальное состояние за пределами экрана */
+  transform: translateX(100%);
+  /* Плавный переход для анимации */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* Непрозрачность */
+  opacity: 0;
+  /* z-index для отображения поверх других элементов */
+  z-index: 1000;
+  /* Граница */
+  border-left: 4px solid;
+}
+
+/* Стили для уведомления об ошибке */
+.error {
+  /* Цвет фона */
+  background-color: #f8d7da;
+  /* Цвет текста */
+  color: #721c24;
+  /* Цвет границы */
+  border-left-color: #dc3545;
+}
+
+/* Стили для показа уведомления */
+.show {
+  /* Возвращаем на место */
+  transform: translateX(0);
+  /* Полная непрозрачность */
+  opacity: 1;
+}
+
+/* Стили для иконки */
+.icon {
+  /* Размер шрифта */
+  font-size: 1.5rem;
+  /* Отступ справа */
+  margin-right: 0.75rem;
+}
+
+/* Стили для содержимого */
+.content {
+  /* Растягиваем на доступное пространство */
+  flex: 1;
+}
+
+/* Стили для заголовка уведомления */
+.title {
+  /* Размер шрифта */
+  font-size: 1rem;
+  /* Толщина шрифта */
+  font-weight: 600;
+  /* Отступ снизу */
+  margin-bottom: 0.25rem;
+}
+
+/* Стили для сообщения уведомления */
+.message {
+  /* Размер шрифта */
+  font-size: 0.9rem;
+  /* Толщина шрифта */
+  font-weight: 400;
+  /* Межстрочный интервал */
+  line-height: 1.4;
+}
+
+/* Стили для кнопки закрытия */
+.closeButton {
+  /* Сбрасываем стандартные стили кнопки */
+  background: none;
+  /* Убираем границу */
+  border: none;
+  /* Размер шрифта */
+  font-size: 1.5rem;
+  /* Цвет текста */
+  color: inherit;
+  /* Курсор указателя */
+  cursor: pointer;
+  /* Внутренние отступы */
+  padding: 0;
+  /* Размеры */
+  width: 24px;
+  height: 24px;
+  /* Выравниваем содержимое по центру */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Скругление углов */
+  border-radius: 50%;
+  /* Плавный переход */
+  transition: background-color 0.2s ease;
+}
+
+/* Эффект при наведении на кнопку закрытия */
+.closeButton:hover {
+  /* Цвет фона при наведении */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .notification {
+    /* Занимаем всю ширину на мобильных */
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

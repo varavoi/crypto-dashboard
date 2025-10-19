@@ -1,14 +1,12 @@
 // Импортируем необходимые функции из React
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 // Импортируем наш API-сервис
 import cryptoApi from '../services/cryptoApi';
 
 // Создаем Context с помощью createContext()
-// Начальное значение - null, но будет установлено в Provider
 const CryptoContext = createContext(null);
 
 // Создаем провайдер, который будет оборачивать наше приложение
-// и предоставлять состояние всем дочерним компонентам
 export const CryptoProvider = ({ children }) => {
   // Состояние для хранения списка криптовалют
   const [cryptoList, setCryptoList] = useState([]);
@@ -20,76 +18,118 @@ export const CryptoProvider = ({ children }) => {
   const [selectedCrypto, setSelectedCrypto] = useState('bitcoin');
   // Состояние для исторических данных (для графика)
   const [historicalData, setHistoricalData] = useState([]);
+  // Состояние для автоматического обновления
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  // Состояние для интервала обновления (в секундах)
+  const [refreshInterval, setRefreshInterval] = useState(60);
 
-  // Функция для загрузки списка криптовалют
-  const fetchCryptoList = async () => {
+  // Функция для очистки ошибок
+  const clearError = useCallback(() => {
+    setError(null);
+  }, []);
+
+  // Функция для загрузки списка криптовалют с обработкой ошибок
+  const fetchCryptoList = useCallback(async () => {
     try {
-      setLoading(true); // Устанавливаем состояние загрузки
-      setError(null); // Сбрасываем ошибки
+      setLoading(true);
+      clearError();
       
-      // Выполняем GET-запрос к API для получения списка криптовалют
       const response = await cryptoApi.get('/coins/markets', {
         params: {
-          vs_currency: 'usd', // Валюта для отображения цен (доллар США)
-          order: 'market_cap_desc', // Сортировка по рыночной капитализации (по убыванию)
-          per_page: 10, // Количество результатов на странице
-          page: 1, // Номер страницы
-          sparkline: false, // Не включать sparkline данные (для экономии трафика)
+          vs_currency: 'usd',
+          order: 'market_cap_desc',
+          per_page: 10,
+          page: 1,
+          sparkline: false,
         },
       });
       
-      // Обновляем состояние с полученными данными
       setCryptoList(response.data);
     } catch (err) {
-      // В случае ошибки сохраняем ее в состояние
-      setError(err.message || 'An error occurred while fetching data');
+      // Более детальная обработка ошибок
+      const errorMessage = err.response?.data?.error || err.message || 'Failed to fetch cryptocurrency data';
+      setError(errorMessage);
       console.error('Error fetching crypto list:', err);
     } finally {
-      // В любом случае снимаем состояние загрузки
       setLoading(false);
     }
-  };
+  }, [clearError]);
 
-  // Функция для загрузки исторических данных для графика
-  const fetchHistoricalData = async (cryptoId, days = 7) => {
+  // Функция для загрузки исторических данных с обработкой ошибок
+  const fetchHistoricalData = useCallback(async (cryptoId, days = 7) => {
     try {
-      // Выполняем GET-запрос для получения исторических данных
       const response = await cryptoApi.get(`/coins/${cryptoId}/market_chart`, {
         params: {
-          vs_currency: 'usd', // Валюта - доллар США
-          days: days, // Количество дней для отображения (по умолчанию 7)
+          vs_currency: 'usd',
+          days: days,
         },
       });
       
-      // Преобразуем данные в формат, удобный для Chart.js
       const formattedData = response.data.prices.map(([timestamp, price]) => ({
-        date: new Date(timestamp).toLocaleDateString(), // Форматируем дату
-        price: price, // Цена на данный момент времени
+        date: new Date(timestamp).toLocaleDateString(),
+        price: price,
       }));
       
-      // Обновляем состояние исторических данных
       setHistoricalData(formattedData);
     } catch (err) {
       console.error('Error fetching historical data:', err);
-      setError('Failed to load historical data');
+      // Не устанавливаем ошибку в состояние, чтобы не перекрывать основные данные
     }
-  };
+  }, []);
+
+  // Функция для ручного обновления данных
+  const refreshData = useCallback(async () => {
+    if (selectedCrypto) {
+      await fetchCryptoList();
+      await fetchHistoricalData(selectedCrypto);
+    }
+  }, [selectedCrypto, fetchCryptoList, fetchHistoricalData]);
+
+  // Функция для переключения автоматического обновления
+  const toggleAutoRefresh = useCallback(() => {
+    setAutoRefresh(prev => !prev);
+  }, []);
 
   // Используем useEffect для загрузки данных при монтировании компонента
   useEffect(() => {
-    fetchCryptoList(); // Загружаем список криптовалют
-    fetchHistoricalData(selectedCrypto); // Загружаем исторические данные для выбранной криптовалюты
-  }, [selectedCrypto]); // Зависимость - при изменении selectedCrypto перезагружаем исторические данные
+    fetchCryptoList();
+    if (selectedCrypto) {
+      fetchHistoricalData(selectedCrypto);
+    }
+  }, [selectedCrypto, fetchCryptoList, fetchHistoricalData]);
+
+  // Используем useEffect для автоматического обновления данных
+  useEffect(() => {
+    let intervalId;
+    
+    if (autoRefresh && refreshInterval > 0) {
+      intervalId = setInterval(() => {
+        refreshData();
+      }, refreshInterval * 1000);
+    }
+    
+    // Очищаем интервал при размонтировании или изменении зависимостей
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [autoRefresh, refreshInterval, refreshData]);
 
   // Подготавливаем значение, которое будет доступно через Context
   const value = {
-    cryptoList, // Список криптовалют
-    loading, // Состояние загрузки
-    error, // Ошибка (если есть)
-    selectedCrypto, // Выбранная криптовалюта
-    setSelectedCrypto, // Функция для изменения выбранной криптовалюты
-    historicalData, // Исторические данные для графика
-    refetchData: fetchCryptoList, // Функция для перезагрузки данных
+    cryptoList,
+    loading,
+    error,
+    selectedCrypto,
+    setSelectedCrypto,
+    historicalData,
+    refreshData,
+    autoRefresh,
+    toggleAutoRefresh,
+    refreshInterval,
+    setRefreshInterval,
+    clearError,
   };
 
   // Возвращаем провайдер с переданным значением
@@ -102,14 +142,11 @@ export const CryptoProvider = ({ children }) => {
 
 // Создаем кастомный хук для удобного использования контекста
 export const useCrypto = () => {
-  // Используем useContext для доступа к значению контекста
   const context = useContext(CryptoContext);
   
-  // Проверяем, используется ли хук внутри провайдера
   if (!context) {
     throw new Error('useCrypto must be used within a CryptoProvider');
   }
   
-  // Возвращаем значение контекста
   return context;
 };

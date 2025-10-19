@@ -1,0 +1,160 @@
+/* Контейнер элементов управления */
+.controls {
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру вертикально */
+  align-items: center;
+  /* Расстояние между элементами */
+  gap: 1rem;
+  /* Отступ снизу */
+  margin-bottom: 1.5rem;
+  /* Внутренние отступы */
+  padding: 1rem;
+  /* Фон */
+  background-color: #f8f9fa;
+  /* Скругление углов */
+  border-radius: 8px;
+  /* Граница */
+  border: 1px solid #e9ecef;
+}
+
+/* Кнопка обновления */
+.refreshButton {
+  /* Сбрасываем стандартные стили */
+  background: #3498db;
+  /* Цвет текста */
+  color: white;
+  /* Граница */
+  border: none;
+  /* Внутренние отступы */
+  padding: 0.5rem 1rem;
+  /* Скругление углов */
+  border-radius: 6px;
+  /* Курсор указателя */
+  cursor: pointer;
+  /* Плавный переход */
+  transition: background-color 0.2s ease;
+  /* Размер шрифта */
+  font-size: 0.9rem;
+  /* Толщина шрифта */
+  font-weight: 500;
+}
+
+/* Эффект при наведении на кнопку */
+.refreshButton:hover {
+  /* Темнее фон при наведении */
+  background: #2980b9;
+}
+
+/* Стили для переключателя */
+.switch {
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру вертикально */
+  align-items: center;
+  /* Расстояние между элементами */
+  gap: 0.5rem;
+  /* Размер шрифта */
+  font-size: 0.9rem;
+  /* Цвет текста */
+  color: #495057;
+  /* Курсор указателя */
+  cursor: pointer;
+}
+
+/* Скрываем стандартный checkbox */
+.switch input {
+  display: none;
+}
+
+/* Стили для ползунка переключателя */
+.slider {
+  /* Размеры */
+  width: 40px;
+  height: 20px;
+  /* Фон */
+  background-color: #ccc;
+  /* Скругление углов */
+  border-radius: 20px;
+  /* Положение относительно */
+  position: relative;
+  /* Плавный переход */
+  transition: background-color 0.3s ease;
+}
+
+/* Круглый бегунок ползунка */
+.slider::before {
+  content: '';
+  /* Размеры */
+  width: 16px;
+  height: 16px;
+  /* Фон */
+  background-color: white;
+  /* Скругление углов */
+  border-radius: 50%;
+  /* Позиционирование */
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  /* Плавный переход */
+  transition: transform 0.3s ease;
+}
+
+/* Стили для активного переключателя */
+.switch input:checked + .slider {
+  background-color: #3498db;
+}
+
+/* Сдвигаем бегунок при активации */
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* Стили для управления интервалом */
+.intervalControl {
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру вертикально */
+  align-items: center;
+  /* Расстояние между элементами */
+  gap: 0.5rem;
+  /* Размер шрифта */
+  font-size: 0.9rem;
+}
+
+/* Стили для выбора интервала */
+.intervalSelect {
+  /* Внутренние отступы */
+  padding: 0.25rem 0.5rem;
+  /* Граница */
+  border: 1px solid #ced4da;
+  /* Скругление углов */
+  border-radius: 4px;
+  /* Фон */
+  background-color: white;
+}
+
+/* Индикатор загрузки */
+.loadingIndicator {
+  /* Размер шрифта */
+  font-size: 0.9rem;
+  /* Цвет текста */
+  color: #6c757d;
+  /* Стиль шрифта */
+  font-style: italic;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .controls {
+    /* Меняем направление на вертикальное на мобильных */
+    flex-direction: column;
+    /* Выравниваем по левому краю */
+    align-items: flex-start;
+  }
+  
+  .intervalControl {
+    /* Выравниваем по левому краю */
+    align-self: flex-start;
+  }
+}

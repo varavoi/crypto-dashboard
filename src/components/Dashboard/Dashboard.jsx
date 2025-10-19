@@ -5,13 +5,15 @@ import { useCrypto } from '../../contexts/CryptoContext';
 import CryptoSelector from '../CryptoSelector/CryptoSelector';
 import DataCard from '../DataCard/DataCard';
 import PriceChart from '../PriceChart/PriceChart';
+import RefreshControls from '../RefreshControls/RefreshControls';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 // Импортируем CSS-модуль для стилей
 import styles from './Dashboard.module.css';
 
-// Основной компонент Dashboard, который собирает все виджеты вместе
+// Основной компонент Dashboard
 const Dashboard = () => {
   // Используем кастомный хук для доступа к данным
-  const { cryptoList, selectedCrypto, loading } = useCrypto();
+  const { cryptoList, selectedCrypto, loading, error } = useCrypto();
 
   // Находим выбранную криптовалюту в списке
   const selectedCryptoData = cryptoList.find(crypto => crypto.id === selectedCrypto);
@@ -26,7 +28,7 @@ const Dashboard = () => {
     }).format(price);
   };
 
-  // Функция для форматирования больших чисел (рыночная капитализация, объем)
+  // Функция для форматирования больших чисел
   const formatLargeNumber = (number) => {
     if (number >= 1e9) {
       return `$${(number / 1e9).toFixed(2)}B`;
@@ -37,17 +39,39 @@ const Dashboard = () => {
     return `$${number.toLocaleString()}`;
   };
 
+  // Если идет первоначальная загрузка, показываем спиннер
+  if (loading && cryptoList.length === 0) {
+    return (
+      <div className={styles.dashboard}>
+        <div className={styles.loadingContainer}>
+          <LoadingSpinner size="large" text="Loading cryptocurrency data..." />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.dashboard}>
       {/* Компонент выбора криптовалюты */}
       <CryptoSelector />
+      
+      {/* Элементы управления обновлением */}
+      <RefreshControls />
+      
+      {/* Если есть ошибка и нет данных, показываем сообщение об ошибке */}
+      {error && cryptoList.length === 0 && (
+        <div className={styles.errorState}>
+          <h2>Unable to Load Data</h2>
+          <p>{error}</p>
+          <p>Please check your internet connection and try again.</p>
+        </div>
+      )}
       
       {/* Если выбрана криптовалюта, показываем дашборд */}
       {selectedCryptoData && (
         <>
           {/* Сетка для карточек с данными */}
           <div className={styles.cardsGrid}>
-            {/* Карточка с текущей ценой */}
             <DataCard
               title="Current Price"
               value={formatPrice(selectedCryptoData.current_price)}
@@ -55,7 +79,6 @@ const Dashboard = () => {
               isLoading={loading}
             />
             
-            {/* Карточка с рыночной капитализацией */}
             <DataCard
               title="Market Cap"
               value={formatLargeNumber(selectedCryptoData.market_cap)}
@@ -63,14 +86,12 @@ const Dashboard = () => {
               isLoading={loading}
             />
             
-            {/* Карточка с объемом торгов за 24 часа */}
             <DataCard
               title="24h Volume"
               value={formatLargeNumber(selectedCryptoData.total_volume)}
               isLoading={loading}
             />
             
-            {/* Карточка с изменением цены за 24 часа */}
             <DataCard
               title="24h Change"
               value={formatPrice(selectedCryptoData.price_change_24h)}
@@ -87,7 +108,7 @@ const Dashboard = () => {
       )}
       
       {/* Если криптовалюта не выбрана, показываем приветственное сообщение */}
-      {!selectedCrypto && !loading && (
+      {!selectedCrypto && !loading && cryptoList.length > 0 && (
         <div className={styles.welcomeMessage}>
           <h2>Welcome to Crypto Dashboard</h2>
           <p>Select a cryptocurrency from the dropdown above to view its data and price chart.</p>

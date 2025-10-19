@@ -1,0 +1,63 @@
+/* Контейнер спиннера */
+.spinnerContainer {
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру вертикально */
+  align-items: center;
+  /* Выравниваем элементы по центру горизонтально */
+  justify-content: center;
+  /* Вертикальное направление */
+  flex-direction: column;
+  /* Внутренние отступы */
+  padding: 2rem;
+}
+
+/* Анимированный спиннер */
+.spinner {
+  /* Граница для создания круга */
+  border: 3px solid #f3f3f3;
+  /* Граница для анимированной части */
+  border-top: 3px solid #3498db;
+  /* Скругление для создания круга */
+  border-radius: 50%;
+  /* Анимация вращения */
+  animation: spin 1s linear infinite;
+  /* Отступ снизу */
+  margin-bottom: 1rem;
+}
+
+/* Размеры спиннера */
+.small {
+  width: 20px;
+  height: 20px;
+}
+
+.medium {
+  width: 40px;
+  height: 40px;
+}
+
+.large {
+  width: 60px;
+  height: 60px;
+}
+
+/* Текст загрузки */
+.loadingText {
+  /* Размер шрифта */
+  font-size: 1rem;
+  /* Цвет текста */
+  color: #6c757d;
+  /* Выравнивание текста по центру */
+  text-align: center;
+}
+
+/* Анимация вращения */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
