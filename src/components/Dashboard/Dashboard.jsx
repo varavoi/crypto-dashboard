@@ -9,6 +9,8 @@ import CryptoList from '../CryptoList/CryptoList';
 import NewsWidget from '../NewsWidget/NewsWidget';
 import PortfolioWidget from '../PortfolioWidget/PortfolioWidget';
 import PriceAlerts from '../PriceAlerts/PriceAlerts';
+import PortfolioAnalytics from '../PortfolioAnalytics/PortfolioAnalytics';
+import ExportManager from '../ExportManager/ExportManager';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
@@ -87,6 +89,9 @@ const Dashboard = () => {
               <div className={styles.chartSection}>
                 <PriceChart />
               </div>
+
+              {/* Расширенная аналитика портфеля */}
+              <PortfolioAnalytics />
             </>
           ) : (
             !loading && cryptoList.length > 0 && (
@@ -102,6 +107,7 @@ const Dashboard = () => {
         <div className={styles.sidebar}>
           <PortfolioWidget />
           <PriceAlerts />
+          <ExportManager />
           <CryptoList />
           <NewsWidget />
         </div>
@@ -110,4 +116,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default React.memo(Dashboard);
