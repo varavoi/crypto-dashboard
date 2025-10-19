@@ -5,6 +5,7 @@ import { ThemeProvider } from './components/ThemeToggle/ThemeToggle';
 import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
 import Notification from './components/Notification/Notification';
+import InstallPrompt from './components/InstallPrompt/InstallPrompt';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <CryptoProvider>
         <div className={styles.app}>
           <Notification />
+          <InstallPrompt />
           <Header />
           <main>
             <Dashboard />

@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Crypto Dashboard",
+  "name": "Crypto Dashboard - Real-time Cryptocurrency Tracking",
+  "description": "A real-time cryptocurrency dashboard with live price updates, charts, and market data",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,26 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#3498db",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "business", "productivity"],
+  "lang": "en-US",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Crypto Dashboard showing real-time cryptocurrency prices and charts"
+    },
+    {
+      "src": "screenshot-narrow.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile view of Crypto Dashboard"
+    }
+  ]
 }
