@@ -1,9 +1,7 @@
-/* Основной контейнер дашборда */
 .dashboard {
   width: 100%;
 }
 
-/* Контейнер для спиннера загрузки */
 .loadingContainer {
   display: flex;
   align-items: center;
@@ -11,58 +9,66 @@
   min-height: 400px;
 }
 
-/* Состояние ошибки */
 .errorState {
   text-align: center;
   padding: 3rem 2rem;
-  background-color: #f8d7da;
+  background-color: var(--danger-color);
+  color: white;
   border-radius: 12px;
-  border: 1px solid #f5c6cb;
-  color: #721c24;
+  margin-bottom: 2rem;
 }
 
-.errorState h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+/* Новая сетка для дашборда */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: start;
 }
 
-.errorState p {
-  margin-bottom: 0.5rem;
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-/* Остальные стили остаются без изменений */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: sticky;
+  top: 2rem;
+}
+
+/* Остальные стили остаются */
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 .chartSection {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .welcomeMessage {
   text-align: center;
   padding: 3rem 2rem;
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
   border-radius: 12px;
-  border: 2px dashed #dee2e6;
+  border: 2px dashed var(--border-color);
 }
 
-.welcomeMessage h2 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.welcomeMessage p {
-  font-size: 1.1rem;
-  color: #6c757d;
-}
-
-/* Адаптивность для мобильных устройств */
+/* Адаптивность */
 @media (max-width: 1200px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    position: static;
+  }
+  
   .cardsGrid {
     grid-template-columns: repeat(2, 1fr);
   }

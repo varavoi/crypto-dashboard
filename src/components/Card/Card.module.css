@@ -1,23 +1,14 @@
-/* Базовые стили для карточки */
 .card {
-  /* Фон карточки */
-  background: #ffffff;
-  /* Скругление углов */
+  background: var(--bg-card);
   border-radius: 12px;
-  /* Тень для эффекта "поднятости" */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Внутренние отступы */
+  box-shadow: var(--shadow);
   padding: 1.5rem;
-  /* Плавный переход для hover-эффектов */
   transition: all 0.3s ease;
-  /* Высота 100% для гибкости в grid/flex布局 */
   height: 100%;
+  border: 1px solid var(--border-color);
 }
 
-/* Эффект при наведении на карточку */
 .card:hover {
-  /* Увеличиваем тень при наведении */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  /* Легкий подъем карточки */
   transform: translateY(-2px);
 }

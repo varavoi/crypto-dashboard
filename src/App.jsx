@@ -1,34 +1,25 @@
-// Импортируем React
 import React from 'react';
-// Импортируем CSS-модуль для стилей
 import styles from './App.module.css';
-// Импортируем наш провайдер для состояния криптовалют
 import { CryptoProvider } from './contexts/CryptoContext';
-// Импортируем компоненты
+import { ThemeProvider } from './components/ThemeToggle/ThemeToggle';
 import Header from './components/Header/Header';
 import Dashboard from './components/Dashboard/Dashboard';
 import Notification from './components/Notification/Notification';
 
-// Главный компонент приложения
 function App() {
   return (
-    // Оборачиваем все приложение в CryptoProvider для доступа к состоянию криптовалют
-    <CryptoProvider>
-      <div className={styles.app}>
-        {/* Компонент уведомлений (рендерится поверх всего) */}
-        <Notification />
-        
-        {/* Компонент заголовка */}
-        <Header />
-        
-        {/* Основное содержимое - Dashboard */}
-        <main>
-          <Dashboard />
-        </main>
-      </div>
-    </CryptoProvider>
+    <ThemeProvider>
+      <CryptoProvider>
+        <div className={styles.app}>
+          <Notification />
+          <Header />
+          <main>
+            <Dashboard />
+          </main>
+        </div>
+      </CryptoProvider>
+    </ThemeProvider>
   );
 }
 
-// Экспортируем компонент App по умолчанию
 export default App;

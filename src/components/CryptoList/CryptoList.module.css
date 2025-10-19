@@ -1,0 +1,197 @@
+/* Контейнер списка криптовалют */
+.cryptoList {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Заголовок и элементы управления */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+/* Поле поиска */
+.searchInput {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: 250px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* Контейнер таблицы */
+.tableContainer {
+  overflow-x: auto;
+}
+
+/* Таблица */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Заголовки таблицы */
+.table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #6c757d;
+  border-bottom: 2px solid #e9ecef;
+  font-size: 0.9rem;
+}
+
+/* Сортируемые заголовки */
+.sortableHeader {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.sortableHeader:hover {
+  color: #3498db;
+}
+
+/* Ячейки таблицы */
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.9rem;
+}
+
+/* Строки таблицы */
+.tableRow {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: #f8f9fa;
+}
+
+/* Ячейка с рангом */
+.rankCell {
+  font-weight: 600;
+  color: #6c757d;
+  width: 80px;
+}
+
+/* Ячейка с именем */
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Иконка криптовалюты */
+.cryptoIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.cryptoName {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.cryptoSymbol {
+  font-size: 0.8rem;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+/* Ячейка с ценой */
+.priceCell {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Ячейка с изменением */
+.changeCell {
+  font-weight: 600;
+}
+
+.changeCell.positive {
+  color: #28a745;
+}
+
+.changeCell.negative {
+  color: #dc3545;
+}
+
+/* Ячейка с рыночной капитализацией */
+.marketCapCell {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Сообщение об отсутствии результатов */
+.noResults {
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Скелетон для загрузки */
+.skeletonList {
+  padding: 1rem;
+}
+
+.skeletonRow {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.skeletonCell {
+  height: 1rem;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.skeletonRow .skeletonCell:nth-child(1) { flex: 0.5; }
+.skeletonRow .skeletonCell:nth-child(2) { flex: 2; }
+.skeletonRow .skeletonCell:nth-child(3) { flex: 1; }
+.skeletonRow .skeletonCell:nth-child(4) { flex: 1; }
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .cryptoIcon {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -1,29 +1,38 @@
-/* Стили для header */
 .header {
-  /* Отступ снизу */
   margin-bottom: 2rem;
-  /* Выравнивание текста по центру */
-  text-align: center;
-  /* Нижняя граница */
-  border-bottom: 2px solid #e0e0e0;
-  /* Внутренние отступы снизу */
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 1rem;
 }
 
-/* Стили для заголовка */
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .title {
-  /* Размер шрифта */
   font-size: 2.5rem;
-  /* Цвет шрифта */
-  color: #2c3e50;
-  /* Отступ снизу */
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
-/* Стили для подзаголовка */
 .subtitle {
-  /* Размер шрифта */
   font-size: 1.1rem;
-  /* Цвет шрифта */
-  color: #7f8c8d;
+  color: var(--text-secondary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .headerContent {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
 }
