@@ -6,7 +6,7 @@ import { ThemeProvider } from './components/ThemeToggle/ThemeToggle';
 import { PerformanceMonitor } from './components/PerformanceOptimizer/PerformanceOptimizer';
 import { useMetaTags } from './hooks/useMetaTags';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
-
+import { LocaleProvider } from './contexts/LocaleContext';
 // Ленивая загрузка компонентов для оптимизации
 const Header = lazy(() => import('./components/Header/Header'));
 const Dashboard = lazy(() => import('./components/Dashboard/Dashboard'));
@@ -22,6 +22,7 @@ function App() {
   );
 
   return (
+    <LocaleProvider>
     <ThemeProvider>
       <CryptoProvider>
         <PortfolioProvider>
@@ -41,6 +42,7 @@ function App() {
         </PortfolioProvider>
       </CryptoProvider>
     </ThemeProvider>
+    </LocaleProvider>
   );
 }
 

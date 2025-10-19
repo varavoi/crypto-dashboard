@@ -32,6 +32,12 @@
   gap: 0.5rem;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 @media (max-width: 768px) {
   .headerContent {
     flex-direction: column;
@@ -46,5 +52,10 @@
   .subtitle {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .controls {
+    justify-content: center;
+    width: 100%;
   }
 }

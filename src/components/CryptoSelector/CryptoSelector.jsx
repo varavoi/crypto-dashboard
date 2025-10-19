@@ -3,9 +3,10 @@ import React from 'react';
 import { useCrypto } from '../../contexts/CryptoContext';
 // Импортируем CSS-модуль для стилей
 import styles from './CryptoSelector.module.css';
-
+import { useLocale } from '../../contexts/LocaleContext';
 // Компонент для выбора криптовалюты из списка
 const CryptoSelector = () => {
+  const { t } = useLocale();
   // Используем кастомный хук для доступа к состоянию криптовалют
   const { cryptoList, selectedCrypto, setSelectedCrypto, loading } = useCrypto();
 
@@ -28,7 +29,7 @@ const CryptoSelector = () => {
     <div className={styles.selectorContainer}>
       {/* Лейбл для select */}
       <label htmlFor="crypto-select" className={styles.label}>
-        Select Cryptocurrency:
+        {t('cryptoSelector.label')}
       </label>
       
       {/* Select элемент для выбора криптовалюты */}
@@ -39,7 +40,7 @@ const CryptoSelector = () => {
         className={styles.select}
       >
         {/* Опция по умолчанию */}
-        <option value="">Choose a cryptocurrency...</option>
+        <option value="">{t('cryptoSelector.placeholder')}</option>
         
         {/* Мапим список криптовалют в option элементы */}
         {cryptoList.map((crypto) => (

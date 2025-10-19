@@ -1,0 +1,128 @@
+.languageSwitcher {
+  position: relative;
+  display: inline-block;
+}
+
+.languageButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.languageButton:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent-color);
+}
+
+.flag {
+  font-size: 1.1rem;
+}
+
+.languageCode {
+  font-weight: 600;
+}
+
+.arrow {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+  margin-left: 0.25rem;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background: var(--bg-secondary);
+}
+
+.dropdownItem.active {
+  background: var(--accent-color);
+  color: white;
+}
+
+.languageInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.languageName {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.languageEnglish {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.1rem;
+}
+
+.checkmark {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .languageButton {
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .languageCode {
+    display: none;
+  }
+  
+  .dropdown {
+    right: -50px;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .languageSwitcher {
+    margin-left: 0.5rem;
+  }
+  
+  .dropdown {
+    right: -80px;
+  }
+}

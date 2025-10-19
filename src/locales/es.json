@@ -1,0 +1,41 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "search": "Buscar...",
+    "noData": "No hay datos disponibles",
+    "unknownError": "Ocurrió un error desconocido"
+  },
+  "header": {
+    "title": "Panel de Cripto",
+    "subtitle": "Seguimiento de criptomonedas en tiempo real"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido al Panel de Cripto",
+    "selectCrypto": "Selecciona una criptomoneda para ver análisis y gráficos detallados",
+    "loadingData": "Cargando datos de criptomonedas..."
+  },
+  "cryptoSelector": {
+    "label": "Seleccionar Criptomoneda",
+    "placeholder": "Elige una criptomoneda...",
+    "searchPlaceholder": "Buscar criptomonedas..."
+  },
+  "portfolio": {
+    "title": "Mi Portafolio",
+    "addAsset": "Agregar Activo",
+    "totalValue": "Valor Total",
+    "totalInvestment": "Inversión Total",
+    "totalProfit": "Beneficio Total",
+    "emptyTitle": "No hay activos en el portafolio",
+    "emptyDescription": "Comienza a rastrear tus inversiones en criptomonedas",
+    "addFirstAsset": "Agregar tu primer activo"
+  }
+}

@@ -4,8 +4,10 @@ import { useCrypto } from '../../contexts/CryptoContext';
 import Card from '../Card/Card';
 import AddToPortfolio from '../AddToPortfolio/AddToPortfolio';
 import styles from './PortfolioWidget.module.css';
+import { useLocale } from '../../contexts/LocaleContext';
 
 const PortfolioWidget = () => {
+   const { t } = useLocale();
   const { portfolio, removeFromPortfolio, calculatePortfolioStats } = usePortfolio();
   const { cryptoList, realTimePrices, getBinanceSymbol } = useCrypto();
   const [showAddForm, setShowAddForm] = useState(false);
@@ -76,25 +78,25 @@ const PortfolioWidget = () => {
   return (
     <Card className={styles.portfolioWidget}>
       <div className={styles.header}>
-        <h3>My Portfolio</h3>
+        <h3>{t('portfolio.title')}</h3>
         <button 
           className={styles.addButton}
           onClick={() => handleAddClick()}
         >
-          + Add Asset
+          {t('portfolio.addAsset')}
         </button>
       </div>
 
       {portfolio.length === 0 ? (
         <div className={styles.emptyState}>
           <div className={styles.emptyIcon}>💼</div>
-          <h4>No assets in portfolio</h4>
-          <p>Start tracking your cryptocurrency investments</p>
+          <h4>{t('portfolio.emptyTitle')}</h4>
+          <p>{t('portfolio.emptyDescription')}</p>
           <button 
             className={styles.ctaButton}
             onClick={() => handleAddClick()}
           >
-            Add Your First Asset
+            {t('portfolio.addFirstAsset')}
           </button>
         </div>
       ) : (
@@ -106,7 +108,7 @@ const PortfolioWidget = () => {
               <div className={styles.statValue}>{formatCurrency(stats.totalValue)}</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statLabel}>Total Profit</div>
+              <div className={styles.statLabel}>{t('portfolio.totalValue')}</div>
               <div className={`${styles.statValue} ${
                 stats.totalProfit >= 0 ? styles.positive : styles.negative
               }`}>
@@ -137,11 +139,11 @@ const PortfolioWidget = () => {
                     <span>{formatCurrency(asset.purchasePrice)}</span>
                   </div>
                   <div className={styles.detailRow}>
-                    <span>Current Price:</span>
+                    <span>{t('portfolio.currentPrice')}</span>
                     <span>{formatCurrency(asset.currentPrice)}</span>
                   </div>
                   <div className={styles.detailRow}>
-                    <span>Profit/Loss:</span>
+                    <span>{t('portfolio.profitLoss')}:</span>
                     <span className={`${styles.profitLoss} ${
                       asset.profit >= 0 ? styles.positive : styles.negative
                     }`}>
@@ -155,13 +157,13 @@ const PortfolioWidget = () => {
                     className={styles.actionButton}
                     onClick={() => handleAddClick(asset.cryptoId)}
                   >
-                    Add More
+                    {t('portfolio.addMore')}
                   </button>
                   <button 
                     className={styles.removeButton}
                     onClick={() => removeFromPortfolio(asset.id)}
                   >
-                    Remove
+                    {t('portfolio.remove')}
                   </button>
                 </div>
               </div>

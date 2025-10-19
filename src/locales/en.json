@@ -1,0 +1,113 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "retry": "Retry",
+    "close": "Close",
+    "confirm": "Confirm",
+    "search": "Search...",
+    "noData": "No data available",
+    "unknownError": "An unknown error occurred"
+  },
+  "header": {
+    "title": "Crypto Dashboard",
+    "subtitle": "Real-time cryptocurrency tracking"
+  },
+  "dashboard": {
+    "welcome": "Welcome to Crypto Dashboard",
+    "selectCrypto": "Select a cryptocurrency to view detailed analytics and charts",
+    "loadingData": "Loading cryptocurrency data..."
+  },
+  "cryptoSelector": {
+    "label": "Select Cryptocurrency",
+    "placeholder": "Choose a cryptocurrency...",
+    "searchPlaceholder": "Search cryptocurrencies..."
+  },
+  "dataCards": {
+    "currentPrice": "Current Price",
+    "marketCap": "Market Cap",
+    "volume24h": "24h Volume",
+    "change24h": "24h Change",
+    "high24h": "24h High",
+    "low24h": "24h Low"
+  },
+  "portfolio": {
+    "title": "My Portfolio",
+    "addAsset": "Add Asset",
+    "totalValue": "Total Value",
+    "totalInvestment": "Total Investment",
+    "totalProfit": "Total Profit",
+    "profitPercentage": "Profit %",
+    "emptyTitle": "No assets in portfolio",
+    "emptyDescription": "Start tracking your cryptocurrency investments",
+    "addFirstAsset": "Add Your First Asset",
+    "addMore": "Add More",
+    "remove": "Remove",
+    "amount": "Amount",
+    "purchasePrice": "Purchase Price",
+    "currentPrice": "Current Price",
+    "investment": "Investment",
+    "currentValue": "Current Value",
+    "profitLoss": "Profit/Loss",
+    "notes": "Notes (Optional)",
+    "addToPortfolio": "Add to Portfolio"
+  },
+  "priceAlerts": {
+    "title": "Price Alerts",
+    "addAlert": "Add Alert",
+    "alertWhen": "Alert when price is",
+    "above": "Above",
+    "below": "Below",
+    "targetPrice": "Target Price",
+    "currentPrice": "Current Price",
+    "createAlert": "Create Alert",
+    "noAlerts": "No price alerts set up yet",
+    "active": "Active",
+    "inactive": "Inactive",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "enable": "Enable notifications",
+    "sound": "Play sound",
+    "browser": "Browser notifications"
+  },
+  "export": {
+    "title": "Data Management",
+    "export": "Export Data",
+    "import": "Import Portfolio",
+    "portfolio": "Portfolio",
+    "historical": "Historical Data",
+    "alerts": "Price Alerts",
+    "format": "Format",
+    "csv": "CSV",
+    "json": "JSON"
+  },
+  "connection": {
+    "connected": "Real-time",
+    "connecting": "Connecting...",
+    "disconnected": "Offline",
+    "error": "Connection Error"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "russian": "Russian",
+    "spanish": "Spanish",
+    "french": "French",
+    "german": "German",
+    "chinese": "Chinese",
+    "japanese": "Japanese"
+  }
+}

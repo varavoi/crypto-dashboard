@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCrypto } from '../../contexts/CryptoContext';
+import { useLocale } from '../../contexts/LocaleContext';
 import CryptoSelector from '../CryptoSelector/CryptoSelector';
 import DataCard from '../DataCard/DataCard';
 import PriceChart from '../PriceChart/PriceChart';
@@ -15,6 +16,8 @@ import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
   const { cryptoList, selectedCrypto, loading, error } = useCrypto();
+  const { t } = useLocale();
+  
   const selectedCryptoData = cryptoList.find(crypto => crypto.id === selectedCrypto);
 
   const formatPrice = (price) => {
@@ -36,7 +39,7 @@ const Dashboard = () => {
     return (
       <div className={styles.dashboard}>
         <div className={styles.loadingContainer}>
-          <LoadingSpinner size="large" text="Loading cryptocurrency data..." />
+          <LoadingSpinner size="large" text={t('dashboard.loadingData')} />
         </div>
       </div>
     );
@@ -49,37 +52,35 @@ const Dashboard = () => {
 
       {error && cryptoList.length === 0 && (
         <div className={styles.errorState}>
-          <h2>Unable to Load Data</h2>
+          <h2>{t('common.error')}</h2>
           <p>{error}</p>
         </div>
       )}
 
-      {/* Основная сетка с виджетами */}
       <div className={styles.dashboardGrid}>
-        {/* Левая колонка - основной дашборд */}
         <div className={styles.mainColumn}>
           {selectedCryptoData ? (
             <>
               <div className={styles.cardsGrid}>
                 <DataCard
-                  title="Current Price"
+                  title={t('dataCards.currentPrice')}
                   value={formatPrice(selectedCryptoData.current_price)}
                   change={selectedCryptoData.price_change_percentage_24h}
                   isLoading={loading}
                 />
                 <DataCard
-                  title="Market Cap"
+                  title={t('dataCards.marketCap')}
                   value={formatLargeNumber(selectedCryptoData.market_cap)}
-                  additionalInfo={`Rank #${selectedCryptoData.market_cap_rank}`}
+                  additionalInfo={`${t('common.rank')} #${selectedCryptoData.market_cap_rank}`}
                   isLoading={loading}
                 />
                 <DataCard
-                  title="24h Volume"
+                  title={t('dataCards.volume24h')}
                   value={formatLargeNumber(selectedCryptoData.total_volume)}
                   isLoading={loading}
                 />
                 <DataCard
-                  title="24h Change"
+                  title={t('dataCards.change24h')}
                   value={formatPrice(selectedCryptoData.price_change_24h)}
                   change={selectedCryptoData.price_change_percentage_24h}
                   isLoading={loading}
@@ -90,20 +91,18 @@ const Dashboard = () => {
                 <PriceChart />
               </div>
 
-              {/* Расширенная аналитика портфеля */}
               <PortfolioAnalytics />
             </>
           ) : (
             !loading && cryptoList.length > 0 && (
               <div className={styles.welcomeMessage}>
-                <h2>Welcome to Crypto Dashboard</h2>
-                <p>Select a cryptocurrency to view detailed analytics and charts.</p>
+                <h2>{t('dashboard.welcome')}</h2>
+                <p>{t('dashboard.selectCrypto')}</p>
               </div>
             )
           )}
         </div>
 
-        {/* Правая колонка - дополнительные виджеты */}
         <div className={styles.sidebar}>
           <PortfolioWidget />
           <PriceAlerts />
@@ -116,4 +115,4 @@ const Dashboard = () => {
   );
 };
 
-export default React.memo(Dashboard);
+export default Dashboard;
