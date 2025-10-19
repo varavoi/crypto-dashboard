@@ -4,8 +4,9 @@ import React from 'react';
 import styles from './App.module.css';
 // Импортируем наш провайдер для состояния криптовалют
 import { CryptoProvider } from './contexts/CryptoContext';
-// Импортируем компонент Header (создадим его следующим)
+// Импортируем компоненты
 import Header from './components/Header/Header';
+import Dashboard from './components/Dashboard/Dashboard';
 
 // Главный компонент приложения
 function App() {
@@ -15,9 +16,10 @@ function App() {
       <div className={styles.app}>
         {/* Компонент заголовка */}
         <Header />
-        {/* Основное содержимое будет добавляться здесь */}
+        
+        {/* Основное содержимое - Dashboard */}
         <main>
-          <p>Dashboard content will be added in the next steps...</p>
+          <Dashboard />
         </main>
       </div>
     </CryptoProvider>

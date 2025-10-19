@@ -1,0 +1,121 @@
+/* Стили для контейнера DataCard */
+.dataCard {
+  /* Отображаем как flex-контейнер с вертикальным направлением */
+  display: flex;
+  flex-direction: column;
+  /* Выравниваем элементы по центру */
+  align-items: center;
+  /* Центрируем текст */
+  text-align: center;
+}
+
+/* Стили для заголовка */
+.title {
+  /* Размер шрифта */
+  font-size: 0.9rem;
+  /* Цвет текста */
+  color: #6c757d;
+  /* Отступ снизу */
+  margin-bottom: 0.5rem;
+  /* Толщина шрифта */
+  font-weight: 600;
+  /* Преобразуем текст в верхний регистр */
+  text-transform: uppercase;
+  /* Межбуквенный интервал */
+  letter-spacing: 0.5px;
+}
+
+/* Стили для основного значения */
+.value {
+  /* Размер шрифта */
+  font-size: 1.8rem;
+  /* Толщина шрифта */
+  font-weight: 700;
+  /* Цвет текста */
+  color: #2c3e50;
+  /* Отступ снизу */
+  margin-bottom: 0.5rem;
+}
+
+/* Контейнер для информации об изменении и дополнительной информации */
+.infoContainer {
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру */
+  align-items: center;
+  /* Расстояние между элементами */
+  gap: 0.5rem;
+}
+
+/* Стили для изменения цены */
+.change {
+  /* Размер шрифта */
+  font-size: 0.9rem;
+  /* Толщина шрифта */
+  font-weight: 600;
+  /* Внутренние отступы */
+  padding: 0.2rem 0.5rem;
+  /* Скругление углов */
+  border-radius: 4px;
+}
+
+/* Стили для положительного изменения */
+.positive {
+  /* Цвет фона */
+  background-color: #d4edda;
+  /* Цвет текста */
+  color: #155724;
+}
+
+/* Стили для отрицательного изменения */
+.negative {
+  /* Цвет фона */
+  background-color: #f8d7da;
+  /* Цвет текста */
+  color: #721c24;
+}
+
+/* Стили для дополнительной информации */
+.additionalInfo {
+  /* Размер шрифта */
+  font-size: 0.8rem;
+  /* Цвет текста */
+  color: #6c757d;
+}
+
+/* Стили для скелетона заголовка */
+.skeletonTitle {
+  /* Размеры */
+  width: 60%;
+  height: 0.9rem;
+  /* Цвет фона */
+  background-color: #e9ecef;
+  /* Скругление углов */
+  border-radius: 4px;
+  /* Отступы */
+  margin-bottom: 0.5rem;
+}
+
+/* Стили для скелетона значения */
+.skeletonValue {
+  /* Размеры */
+  width: 80%;
+  height: 1.8rem;
+  /* Цвет фона */
+  background-color: #e9ecef;
+  /* Скругление углов */
+  border-radius: 4px;
+  /* Отступы */
+  margin-bottom: 0.5rem;
+}
+
+/* Стили для скелетона изменения */
+.skeletonChange {
+  /* Размеры */
+  width: 40%;
+  height: 0.9rem;
+  /* Цвет фона */
+  background-color: #e9ecef;
+  /* Скругление углов */
+  border-radius: 4px;
+}

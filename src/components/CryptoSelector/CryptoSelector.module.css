@@ -1,0 +1,63 @@
+/* Контейнер для селектора */
+.selectorContainer {
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем элементы по центру вертикально */
+  align-items: center;
+  /* Расстояние между лейблом и селектором */
+  gap: 1rem;
+  /* Отступ снизу */
+  margin-bottom: 2rem;
+}
+
+/* Стили для лейбла */
+.label {
+  /* Размер шрифта */
+  font-size: 1rem;
+  /* Толщина шрифта */
+  font-weight: 600;
+  /* Цвет текста */
+  color: #2c3e50;
+}
+
+/* Стили для select элемента */
+.select {
+  /* Внутренние отступы */
+  padding: 0.5rem 1rem;
+  /* Размер шрифта */
+  font-size: 1rem;
+  /* Граница */
+  border: 2px solid #e0e0e0;
+  /* Скругление углов */
+  border-radius: 8px;
+  /* Цвет фона */
+  background-color: #ffffff;
+  /* Убираем стандартный стиль браузера */
+  appearance: none;
+  /* Добавляем кастомную стрелку */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
+  /* Плавный переход для границы */
+  transition: border-color 0.3s ease;
+}
+
+/* Стили для select при фокусе */
+.select:focus {
+  /* Убираем стандартный outline */
+  outline: none;
+  /* Изменяем цвет границы */
+  border-color: #3498db;
+}
+
+/* Стили для скелетона селектора */
+.skeletonSelect {
+  /* Размеры */
+  width: 200px;
+  height: 40px;
+  /* Цвет фона */
+  background-color: #e9ecef;
+  /* Скругление углов */
+  border-radius: 8px;
+}

@@ -1,0 +1,36 @@
+/* Контейнер для графика */
+.chartContainer {
+  /* Отступы */
+  padding: 1.5rem;
+  /* Минимальная высота */
+  min-height: 400px;
+  /* Отображаем как flex-контейнер */
+  display: flex;
+  /* Выравниваем содержимое по центру */
+  align-items: center;
+  /* Центрируем содержимое */
+  justify-content: center;
+}
+
+/* Стили для скелетона графика */
+.skeletonChart {
+  /* Размеры */
+  width: 100%;
+  height: 300px;
+  /* Цвет фона */
+  background-color: #e9ecef;
+  /* Скругление углов */
+  border-radius: 8px;
+}
+
+/* Стили для сообщения об отсутствии данных */
+.noData {
+  /* Размер шрифта */
+  font-size: 1.1rem;
+  /* Цвет текста */
+  color: #6c757d;
+  /* Выравнивание текста по центру */
+  text-align: center;
+  /* Внутренние отступы */
+  padding: 2rem;
+}

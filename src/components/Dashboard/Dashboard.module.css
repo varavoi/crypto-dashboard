@@ -1,0 +1,80 @@
+/* Основной контейнер дашборда */
+.dashboard {
+  /* Ширина 100% */
+  width: 100%;
+}
+
+/* Сетка для карточек с данными */
+.cardsGrid {
+  /* Отображаем как grid-контейнер */
+  display: grid;
+  /* 4 колонки одинаковой ширины */
+  grid-template-columns: repeat(4, 1fr);
+  /* Расстояние между элементами */
+  gap: 1.5rem;
+  /* Отступ снизу */
+  margin-bottom: 2rem;
+}
+
+/* Секция с графиком */
+.chartSection {
+  /* Отступ снизу */
+  margin-bottom: 2rem;
+}
+
+/* Стили для приветственного сообщения */
+.welcomeMessage {
+  /* Выравнивание текста по центру */
+  text-align: center;
+  /* Внутренние отступы */
+  padding: 3rem 2rem;
+  /* Цвет фона */
+  background-color: #f8f9fa;
+  /* Скругление углов */
+  border-radius: 12px;
+  /* Граница */
+  border: 2px dashed #dee2e6;
+}
+
+/* Заголовок приветственного сообщения */
+.welcomeMessage h2 {
+  /* Размер шрифта */
+  font-size: 2rem;
+  /* Цвет текста */
+  color: #2c3e50;
+  /* Отступ снизу */
+  margin-bottom: 1rem;
+}
+
+/* Текст приветственного сообщения */
+.welcomeMessage p {
+  /* Размер шрифта */
+  font-size: 1.1rem;
+  /* Цвет текста */
+  color: #6c757d;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 1200px) {
+  .cardsGrid {
+    /* 2 колонки на планшетах */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsGrid {
+    /* 1 колонка на мобильных */
+    grid-template-columns: 1fr;
+  }
+  
+  .welcomeMessage {
+    /* Уменьшаем отступы на мобильных */
+    padding: 2rem 1rem;
+  }
+  
+  .welcomeMessage h2 {
+    /* Уменьшаем размер шрифта на мобильных */
+    font-size: 1.5rem;
+  }
+}
