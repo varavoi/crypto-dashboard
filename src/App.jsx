@@ -1,16 +1,28 @@
-import React, {useState} from 'react';
-import styles from './App.module.css'
+// Импортируем React
+import React from 'react';
+// Импортируем CSS-модуль для стилей
+import styles from './App.module.css';
+// Импортируем наш провайдер для состояния криптовалют
+import { CryptoProvider } from './contexts/CryptoContext';
+// Импортируем компонент Header (создадим его следующим)
+import Header from './components/Header/Header';
 
+// Главный компонент приложения
 function App() {
-  const [message] = useState('Crypto Dashboard is initializing...')
   return (
-     <div className={styles.app}>
-      {/* Заголовок первого уровня */}
-      <h1>Crypto Dashboard</h1>
-      {/* Отображаем значение из состояния message */}
-      <p>{message}</p>
-    </div>
+    // Оборачиваем все приложение в CryptoProvider для доступа к состоянию криптовалют
+    <CryptoProvider>
+      <div className={styles.app}>
+        {/* Компонент заголовка */}
+        <Header />
+        {/* Основное содержимое будет добавляться здесь */}
+        <main>
+          <p>Dashboard content will be added in the next steps...</p>
+        </main>
+      </div>
+    </CryptoProvider>
   );
 }
 
+// Экспортируем компонент App по умолчанию
 export default App;

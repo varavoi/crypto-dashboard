@@ -1,0 +1,29 @@
+/* Стили для header */
+.header {
+  /* Отступ снизу */
+  margin-bottom: 2rem;
+  /* Выравнивание текста по центру */
+  text-align: center;
+  /* Нижняя граница */
+  border-bottom: 2px solid #e0e0e0;
+  /* Внутренние отступы снизу */
+  padding-bottom: 1rem;
+}
+
+/* Стили для заголовка */
+.title {
+  /* Размер шрифта */
+  font-size: 2.5rem;
+  /* Цвет шрифта */
+  color: #2c3e50;
+  /* Отступ снизу */
+  margin-bottom: 0.5rem;
+}
+
+/* Стили для подзаголовка */
+.subtitle {
+  /* Размер шрифта */
+  font-size: 1.1rem;
+  /* Цвет шрифта */
+  color: #7f8c8d;
+}
